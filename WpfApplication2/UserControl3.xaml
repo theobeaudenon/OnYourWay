@@ -1,0 +1,27 @@
+﻿<mui:ModernDialog x:Class="WpfApplication2.Dialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        xmlns:modernUiApp1="clr-namespace:WpfApplication2" Title="Dialog" Height="300" Width="300"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <mui:ModernDialog.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="4,0,0,0" />
+            <Setter Property="MinHeight" Value="21" />
+            <Setter Property="MinWidth" Value="65" />
+        </Style>
+    </mui:ModernDialog.Resources>
+
+   <!--  <mui:ModernDialog.Buttons>
+        <WpfApplication2:ButtonList>
+            <Button Content="OK" Command="{Binding CloseTrueCommand}" IsDefault="True" />
+            <Button Content="Close" Command="{Binding CloseCommand}" IsCancel="True" />
+            <Button Content="Foo" Command="{Binding Foo}" />
+        </WpfApplication2:ButtonList>
+    </mui:ModernDialog.Buttons>-->
+
+    <Grid>
+        <TextBlock>Content</TextBlock>
+    </Grid>
+</mui:ModernDialog>

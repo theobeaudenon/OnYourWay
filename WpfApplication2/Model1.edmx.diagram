@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98435e68808749ec8a70bd228baa3dd0" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.CategoriesSet" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.CheckoutSet" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.EmployeesSet" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.ProductsSet" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.SectionsSet" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DBModel.FK_CategoriesProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_CategoriesSections" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_EmployeesCheckout" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_EmployeesSections" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

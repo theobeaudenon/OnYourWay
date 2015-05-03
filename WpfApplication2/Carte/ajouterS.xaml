@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="WpfApplication2.Carte.ajouterS"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="28" />
+
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="1" Content="Ajouter un Rayon"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Cat:"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Emp:"/> 
+        <ComboBox x:Name="cat" Grid.Column="1" Grid.Row="2" Margin="3" />
+
+        <ComboBox x:Name="emp" Grid.Column="1" Grid.Row="3" Margin="3" />
+        <Button x:Name="val1" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" 
+            MinWidth="80" Margin="0,3,0,0" Content="Ajouter" Click="Button_Click_1" Width="78"  />
+
+
+
+
+        <Label Grid.Row="5" Grid.Column="1" Content="Ajouter une Caisse"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Emp:"/>
+        <ComboBox x:Name="emp1" Grid.Column="1" Grid.Row="6" Margin="3" />
+        <Button Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" 
+            MinWidth="80" Margin="0,3,0,0" Content="Ajouter"  Width="78" Click="Button_Click"  />
+
+    </Grid>
+</UserControl>

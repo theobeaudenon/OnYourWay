@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoriesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CheckoutSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="X" Type="int" Nullable="false" />
+          <Property Name="Y" Type="int" Nullable="false" />
+          <Property Name="EmployeesId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CheckEmpty" Type="bit" Nullable="false" />
+          <Property Name="Prix" Type="int" Nullable="false" />
+          <Property Name="CategoriesId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SectionsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="X" Type="int" Nullable="false" />
+          <Property Name="Y" Type="int" Nullable="false" />
+          <Property Name="EmployeesId" Type="int" Nullable="false" />
+          <Property Name="CategoriesId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CategoriesProducts">
+          <End Role="CategoriesSet" Type="Self.CategoriesSet" Multiplicity="1" />
+          <End Role="ProductsSet" Type="Self.ProductsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsSet">
+              <PropertyRef Name="CategoriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriesSections">
+          <End Role="CategoriesSet" Type="Self.CategoriesSet" Multiplicity="1" />
+          <End Role="SectionsSet" Type="Self.SectionsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionsSet">
+              <PropertyRef Name="CategoriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeesCheckout">
+          <End Role="EmployeesSet" Type="Self.EmployeesSet" Multiplicity="1" />
+          <End Role="CheckoutSet" Type="Self.CheckoutSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckoutSet">
+              <PropertyRef Name="EmployeesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeesSections">
+          <End Role="EmployeesSet" Type="Self.EmployeesSet" Multiplicity="1" />
+          <End Role="SectionsSet" Type="Self.SectionsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionsSet">
+              <PropertyRef Name="EmployeesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="CategoriesSet" EntityType="Self.CategoriesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckoutSet" EntityType="Self.CheckoutSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesSet" EntityType="Self.EmployeesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductsSet" EntityType="Self.ProductsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionsSet" EntityType="Self.SectionsSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CategoriesProducts" Association="Self.FK_CategoriesProducts">
+            <End Role="CategoriesSet" EntitySet="CategoriesSet" />
+            <End Role="ProductsSet" EntitySet="ProductsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriesSections" Association="Self.FK_CategoriesSections">
+            <End Role="CategoriesSet" EntitySet="CategoriesSet" />
+            <End Role="SectionsSet" EntitySet="SectionsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeesCheckout" Association="Self.FK_EmployeesCheckout">
+            <End Role="EmployeesSet" EntitySet="EmployeesSet" />
+            <End Role="CheckoutSet" EntitySet="CheckoutSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeesSections" Association="Self.FK_EmployeesSections">
+            <End Role="EmployeesSet" EntitySet="EmployeesSet" />
+            <End Role="SectionsSet" EntitySet="SectionsSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoriesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProductsSet" Relationship="Self.FK_CategoriesProducts" FromRole="CategoriesSet" ToRole="ProductsSet" />
+          <NavigationProperty Name="SectionsSet" Relationship="Self.FK_CategoriesSections" FromRole="CategoriesSet" ToRole="SectionsSet" />
+        </EntityType>
+        <EntityType Name="CheckoutSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="X" Type="Int32" Nullable="false" />
+          <Property Name="Y" Type="Int32" Nullable="false" />
+          <Property Name="EmployeesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeesSet" Relationship="Self.FK_EmployeesCheckout" FromRole="CheckoutSet" ToRole="EmployeesSet" />
+        </EntityType>
+        <EntityType Name="EmployeesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CheckoutSet" Relationship="Self.FK_EmployeesCheckout" FromRole="EmployeesSet" ToRole="CheckoutSet" />
+          <NavigationProperty Name="SectionsSet" Relationship="Self.FK_EmployeesSections" FromRole="EmployeesSet" ToRole="SectionsSet" />
+        </EntityType>
+        <EntityType Name="ProductsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CheckEmpty" Type="Boolean" Nullable="false" />
+          <Property Name="Prix" Type="Int32" Nullable="false" />
+          <Property Name="CategoriesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoriesSet" Relationship="Self.FK_CategoriesProducts" FromRole="ProductsSet" ToRole="CategoriesSet" />
+        </EntityType>
+        <EntityType Name="SectionsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="X" Type="Int32" Nullable="false" />
+          <Property Name="Y" Type="Int32" Nullable="false" />
+          <Property Name="EmployeesId" Type="Int32" Nullable="false" />
+          <Property Name="CategoriesId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoriesSet" Relationship="Self.FK_CategoriesSections" FromRole="SectionsSet" ToRole="CategoriesSet" />
+          <NavigationProperty Name="EmployeesSet" Relationship="Self.FK_EmployeesSections" FromRole="SectionsSet" ToRole="EmployeesSet" />
+        </EntityType>
+        <Association Name="FK_CategoriesProducts">
+          <End Role="CategoriesSet" Type="Self.CategoriesSet" Multiplicity="1" />
+          <End Role="ProductsSet" Type="Self.ProductsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductsSet">
+              <PropertyRef Name="CategoriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriesSections">
+          <End Role="CategoriesSet" Type="Self.CategoriesSet" Multiplicity="1" />
+          <End Role="SectionsSet" Type="Self.SectionsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionsSet">
+              <PropertyRef Name="CategoriesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeesCheckout">
+          <End Role="EmployeesSet" Type="Self.EmployeesSet" Multiplicity="1" />
+          <End Role="CheckoutSet" Type="Self.CheckoutSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckoutSet">
+              <PropertyRef Name="EmployeesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeesSections">
+          <End Role="EmployeesSet" Type="Self.EmployeesSet" Multiplicity="1" />
+          <End Role="SectionsSet" Type="Self.SectionsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SectionsSet">
+              <PropertyRef Name="EmployeesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoriesSet" EntityType="Self.CategoriesSet" />
+          <EntitySet Name="CheckoutSet" EntityType="Self.CheckoutSet" />
+          <EntitySet Name="EmployeesSet" EntityType="Self.EmployeesSet" />
+          <EntitySet Name="ProductsSet" EntityType="Self.ProductsSet" />
+          <EntitySet Name="SectionsSet" EntityType="Self.SectionsSet" />
+          <AssociationSet Name="FK_CategoriesProducts" Association="Self.FK_CategoriesProducts">
+            <End Role="CategoriesSet" EntitySet="CategoriesSet" />
+            <End Role="ProductsSet" EntitySet="ProductsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriesSections" Association="Self.FK_CategoriesSections">
+            <End Role="CategoriesSet" EntitySet="CategoriesSet" />
+            <End Role="SectionsSet" EntitySet="SectionsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeesCheckout" Association="Self.FK_EmployeesCheckout">
+            <End Role="EmployeesSet" EntitySet="EmployeesSet" />
+            <End Role="CheckoutSet" EntitySet="CheckoutSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeesSections" Association="Self.FK_EmployeesSections">
+            <End Role="EmployeesSet" EntitySet="EmployeesSet" />
+            <End Role="SectionsSet" EntitySet="SectionsSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="CategoriesSet">
+            <EntityTypeMapping TypeName="DBModel.CategoriesSet">
+              <MappingFragment StoreEntitySet="CategoriesSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckoutSet">
+            <EntityTypeMapping TypeName="DBModel.CheckoutSet">
+              <MappingFragment StoreEntitySet="CheckoutSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="EmployeesId" ColumnName="EmployeesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeesSet">
+            <EntityTypeMapping TypeName="DBModel.EmployeesSet">
+              <MappingFragment StoreEntitySet="EmployeesSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsSet">
+            <EntityTypeMapping TypeName="DBModel.ProductsSet">
+              <MappingFragment StoreEntitySet="ProductsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="CheckEmpty" ColumnName="CheckEmpty" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="CategoriesId" ColumnName="CategoriesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionsSet">
+            <EntityTypeMapping TypeName="DBModel.SectionsSet">
+              <MappingFragment StoreEntitySet="SectionsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+                <ScalarProperty Name="EmployeesId" ColumnName="EmployeesId" />
+                <ScalarProperty Name="CategoriesId" ColumnName="CategoriesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
