@@ -23,7 +23,17 @@ namespace WpfApplication2
             DB.EmployeesSet.Add(newEmployee);
             DB.SaveChanges();
         }
-
+        public static EmployeesSet  GetEmployee(int id)
+        {
+            foreach (EmployeesSet emps in utilsDB.listEmployee())
+            {
+                if (emps.Id == id)
+                {
+                    return emps;
+                }
+            }
+            return null;
+        }
         public static void RemoveEmployee(int ID)
         {
             var serveurQuery = from employee in DB.EmployeesSet
@@ -157,7 +167,17 @@ namespace WpfApplication2
             DB.CategoriesSet.Add(newCategorie);
             DB.SaveChanges();
         }
-
+        public static CategoriesSet GetCategorie(int id)
+        {
+            foreach (CategoriesSet emps in utilsDB.listCategorie())
+            {
+                if (emps.Id == id)
+                {
+                    return emps;
+                }
+            }
+            return null;
+        }
         public static void RemoveCategorie(int ID)
         {
             var serveurQuery = from categorie in DB.CategoriesSet

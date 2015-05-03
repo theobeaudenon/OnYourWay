@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,17 +24,34 @@ namespace WpfApplication2.Produits
         public ajouterS()
         {
             InitializeComponent();
+           
         }
 
    
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        { 
-            //utilsDB.AddWaiter(nom.Text, prenom.Text);
-            MessageBox.Show("Le produit a été ajouter avec succés");
+        {
+            CategoriesSet p = (CategoriesSet)cat.SelectedItem;
+            int tmp = 0;
+            if (int.TryParse(prix.Text, out tmp))
+            {
+
+            }
+            utilsDB.AddProduct(nom.Text, tmp, p.Id , (bool)dispo.IsChecked);
+            ModernDialog.ShowMessage("Le produit a été ajouter avec succès", "", MessageBoxButton.OK);
             //nom.Text = "";
             //prenom.Text = "";
             this.Content = new ajouterS();
+        }
+
+        private void load(object sender, RoutedEventArgs e)
+        {
+            cat.Items.Clear();
+            foreach (CategoriesSet d in utilsDB.listCategorie())
+            {
+                cat.Items.Add(d);
+
+            }
         }
     }
 }

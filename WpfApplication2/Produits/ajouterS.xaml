@@ -24,7 +24,7 @@
         <TextBox x:Name="nom" Grid.Column="1" Grid.Row="0" Margin="3" />
         <TextBox x:Name="prix" Grid.Column="1" Grid.Row="1" Margin="3" />
         <CheckBox x:Name="dispo" Grid.Column="1" Grid.Row="2" Margin="3" IsChecked="True"  />
-        <ComboBox x:Name="cat" Grid.Column="1" Grid.Row="3" Margin="3" />
+        <ComboBox x:Name="cat" Grid.Column="1" Grid.Row="3" Margin="3" Loaded="load" />
         <Button Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" 
             MinWidth="80" Margin="0,3,0,0" Content="Ajouter" Click="Button_Click_1" Width="78"  />
 

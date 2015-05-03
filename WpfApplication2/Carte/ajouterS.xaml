@@ -25,7 +25,7 @@
         <Label Grid.Row="1" Grid.Column="1" Content="Ajouter un Rayon"/>
         <Label Grid.Row="2" Grid.Column="0" Content="Cat:"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Emp:"/> 
-        <ComboBox x:Name="cat" Grid.Column="1" Grid.Row="2" Margin="3" />
+        <ComboBox x:Name="cat" Grid.Column="1" Grid.Row="2" Margin="3" Loaded="load" />
 
         <ComboBox x:Name="emp" Grid.Column="1" Grid.Row="3" Margin="3" />
         <Button x:Name="val1" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" 

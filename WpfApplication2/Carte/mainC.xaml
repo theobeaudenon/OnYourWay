@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="Load">
     <Grid x:Name="___Aucun_nom_" Style="{StaticResource ContentRoot}">
         <!-- -<TextBlock Text="Test de panel 1" /> -->
 
@@ -29,6 +29,6 @@
 
             </Canvas>
         </Border>
-        <Button Content="Button" HorizontalAlignment="Left" Height="27" Margin="976,644,-839,-371" VerticalAlignment="Top" Width="163" Click="Button_Click"/>
+        <Button Content="Sauvegarder" HorizontalAlignment="Left" Height="27" Margin="1039,557,-902,-284" VerticalAlignment="Top" Width="163" Click="Button_Click"/>
     </Grid>
 </UserControl>

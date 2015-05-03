@@ -37,20 +37,20 @@ namespace WpfApplication2.Produits
                 if (Liste.SelectedItem != null)
                 {
                     //MessageBox.Show(Liste.SelectedItem.ToString());
-                    this.Content = new modifierS((EmployeesSet)Liste.SelectedItem);
+                    this.Content = new modifierS((ProductsSet)Liste.SelectedItem);
                 }
         }
-
 
         private void load(object sender, RoutedEventArgs e)
         {
             Liste.Items.Clear();
-            foreach (EmployeesSet d in utilsDB.listEmployee())
+            foreach (ProductsSet d in utilsDB.listProduct())
             {
                 Liste.Items.Add(d);
 
             }
         }
+
 
       
 

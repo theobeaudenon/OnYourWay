@@ -20,16 +20,30 @@ namespace WpfApplication2.Pages
     /// </summary>
     public partial class CheckOutV : UserControl
     {
-        private CheckoutSet d;
+        private CheckoutSet d; 
 
  
 
-        public CheckOutV(CheckoutSet d)
+  
+
+        public CheckOutV(CheckoutSet d )
         {
             InitializeComponent();
             // TODO: Complete member initialization
-            this.d = d;
-            
+            this.d = d; 
+          
+            EmployeesSet emps = utilsDB.GetEmployee(d.EmployeesId);
+
+            emp.Content = emps.ToString();
+
+
+            Liste.Items.Clear();
+            foreach (ProductsSet ds in utilsDB.listProduct())
+            {
+
+                Liste.Items.Add(ds);
+
+            }
         }
 
  
@@ -42,6 +56,11 @@ namespace WpfApplication2.Pages
 
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new Page1(); 
         }
 
     

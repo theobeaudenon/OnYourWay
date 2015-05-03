@@ -6,10 +6,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <mui:ModernTab SelectedSource="/Produits/listeS.xaml#1" Layout="Tab">
+        <mui:ModernTab SelectedSource="/Produits/listeS.xaml" Layout="Tab">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="Creer" Source="/Produits/ajouterS.xaml#1" />
-                 <mui:Link DisplayName="Liste" Source="/Produits/listeS.xaml#2" />
+                <mui:Link DisplayName="Creer" Source="/Produits/ajouterS.xaml" />
+                 <mui:Link DisplayName="Liste" Source="/Produits/listeS.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

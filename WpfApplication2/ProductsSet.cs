@@ -21,5 +21,10 @@ namespace WpfApplication2
         public int CategoriesId { get; set; }
     
         public virtual CategoriesSet CategoriesSet { get; set; }
+
+        public override string ToString()
+        {
+            return Nom;
+        }
     }
 }

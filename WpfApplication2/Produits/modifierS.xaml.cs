@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace WpfApplication2.Produits
     /// </summary>
     public partial class modifierS : UserControl
     {
-        private EmployeesSet p;
+        private ProductsSet p;
 
         public modifierS()
         {
@@ -30,13 +31,33 @@ namespace WpfApplication2.Produits
 
         }
 
-        public modifierS(EmployeesSet p)
+        public modifierS(ProductsSet p)
         {
             InitializeComponent();
             // TODO: Complete member initialization
+            cat.Items.Clear();
+            foreach (CategoriesSet d in utilsDB.listCategorie())
+            {
+                cat.Items.Add(d);
+            }
+
+            prix.Text = Convert.ToString(p.Prix);
             this.p = p;
-            //Prenom.Text = p.Prenom;
-           // Nom.Text = p.Nom;
+            nom.Text = p.Nom;
+            int tmp = 0;
+            if (int.TryParse(prix.Text, out tmp))
+            {
+                
+            }
+            tmp = p.Prix;
+            dispo.IsChecked = p.CheckEmpty;
+            cat.Items.Clear();
+            foreach (CategoriesSet d in utilsDB.listCategorie())
+            {
+                cat.Items.Add(d);
+
+            }
+            cat.SelectedItem = utilsDB.GetCategorie(p.CategoriesId);
             valider.IsEnabled = true;
 
         }
@@ -54,7 +75,7 @@ namespace WpfApplication2.Produits
 
         private void supprimer_Click(object sender, RoutedEventArgs e)
         {
-            utilsDB.RemoveEmployee(  p.Id);
+            utilsDB.RemoveProduct(  p.Id);
         }
     }
 }

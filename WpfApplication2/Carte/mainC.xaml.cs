@@ -30,47 +30,8 @@ namespace WpfApplication2.Carte
 
 
              
-            foreach (CheckoutSet d in utilsDB.listCheckout())
-            {
-                string templatse = "<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType=\"Thumb\"  >" +
-               "  <Image   Source=\"/WpfApplication2;component/carre-vert.gif\"  /> " +
-              "</ControlTemplate>";
-
-                System.Windows.Controls.Primitives.Thumb thumb = new System.Windows.Controls.Primitives.Thumb();
-                thumb.DragDelta += new DragDeltaEventHandler(Thumb_DragDelta);
-                //  thumb.Template = template;
-                thumb.Template = (ControlTemplate)XamlReader.Parse(templatse);
-
-                canvas.Children.Add(thumb);
-
-
-                Canvas.SetLeft(thumb, d.X);
-                Canvas.SetTop(thumb, d.Y);
-
-
-            }
-            foreach (SectionsSet d in utilsDB.listSections())
-            {
-
-                string templatsee = "<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType=\"Thumb\"  >" +
-              "  <Image   Source=\"/WpfApplication2;component/carre-noir.jpg\"  /> " +
-             "</ControlTemplate>";
-
-                System.Windows.Controls.Primitives.Thumb thumbe = new System.Windows.Controls.Primitives.Thumb();
-                thumbe.DragDelta += new DragDeltaEventHandler(Thumb_DragDelta);
-                //  thumb.Template = template;
-                thumbe.Template = (ControlTemplate)XamlReader.Parse(templatsee);
-                
-                canvas.Children.Add(thumbe);
-
-                Canvas.SetLeft(thumbe, d.X);
-                Canvas.SetTop(thumbe, d.Y);
- 
-
-            }
-             
-
-
+           
+     
 
 
          }
@@ -125,6 +86,49 @@ namespace WpfApplication2.Carte
                 i++;
             }
 
+        }
+
+        private void Load(object sender, RoutedEventArgs e)
+        {
+            canvas.Children.Clear();
+            foreach (CheckoutSet d in utilsDB.listCheckout())
+            {
+                string templatse = "<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType=\"Thumb\"  >" +
+               "  <Image   Source=\"/WpfApplication2;component/carre-vert.gif\"  /> " +
+              "</ControlTemplate>";
+
+                System.Windows.Controls.Primitives.Thumb thumb = new System.Windows.Controls.Primitives.Thumb();
+                thumb.DragDelta += new DragDeltaEventHandler(Thumb_DragDelta);
+                //  thumb.Template = template;
+                thumb.Template = (ControlTemplate)XamlReader.Parse(templatse);
+
+                canvas.Children.Add(thumb);
+
+
+                Canvas.SetLeft(thumb, d.X);
+                Canvas.SetTop(thumb, d.Y);
+
+
+            }
+            foreach (SectionsSet d in utilsDB.listSections())
+            {
+
+                string templatsee = "<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType=\"Thumb\"  >" +
+              "  <Image   Source=\"/WpfApplication2;component/carre-noir.jpg\"  /> " +
+             "</ControlTemplate>";
+
+                System.Windows.Controls.Primitives.Thumb thumbe = new System.Windows.Controls.Primitives.Thumb();
+                thumbe.DragDelta += new DragDeltaEventHandler(Thumb_DragDelta);
+                //  thumb.Template = template;
+                thumbe.Template = (ControlTemplate)XamlReader.Parse(templatsee);
+
+                canvas.Children.Add(thumbe);
+
+                Canvas.SetLeft(thumbe, d.X);
+                Canvas.SetTop(thumbe, d.Y);
+
+
+            }
         }
  
        
